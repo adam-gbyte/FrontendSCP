@@ -116,6 +116,10 @@
 	onDestroy(() => stopCamera());
 </script>
 
+<svelte:head>
+	<title>Analisis Kematangan Pisang Cavendish</title>
+</svelte:head>
+
 <h1>DETEKSI KEMATANGAN PISANG CAVENDISH</h1>
 
 <div class="camera">
