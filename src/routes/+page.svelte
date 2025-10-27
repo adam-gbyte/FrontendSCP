@@ -106,6 +106,7 @@
 
 <svelte:head>
 	<title>Analisis Kematangan Pisang Cavendish</title>
+	<link rel="icon" href="/logo.jpeg" />
 </svelte:head>
 
 <main
@@ -150,25 +151,25 @@
 					disabled={taking}
 					class="rounded-lg bg-yellow-500 px-4 py-2 text-white shadow transition hover:bg-yellow-600"
 				>
-					📸 Ambil Foto
+					Ambil Foto
 				</button>
 				<button
 					on:click={() => startCamera(null, 'environment')}
 					class="rounded-lg bg-blue-500 px-4 py-2 text-white shadow transition hover:bg-blue-600"
 				>
-					🔄 Kamera Belakang
+					Kamera Belakang
 				</button>
 				<button
 					on:click={() => startCamera(null, 'user')}
 					class="rounded-lg bg-blue-500 px-4 py-2 text-white shadow transition hover:bg-blue-600"
 				>
-					🔄 Kamera Depan
+					Kamera Depan
 				</button>
 				<button
 					on:click={stopCamera}
 					class="rounded-lg bg-red-500 px-4 py-2 text-white shadow transition hover:bg-red-600"
 				>
-					⛔ Stop Kamera
+					Stop Kamera
 				</button>
 			</div>
 
@@ -181,13 +182,13 @@
 							on:click={downloadPhoto}
 							class="flex-1 rounded-lg bg-green-500 px-4 py-2 text-white shadow transition hover:bg-green-600"
 						>
-							⬇️ Download
+							Download
 						</button>
 						<button
 							on:click={uploadPhoto}
 							class="flex-1 rounded-lg bg-purple-500 px-4 py-2 text-white shadow transition hover:bg-purple-600"
 						>
-							⬆️ Upload
+							Upload
 						</button>
 					</div>
 				</div>
