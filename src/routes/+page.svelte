@@ -51,13 +51,7 @@
 			</div>
 		</div>
 
-		<div class="mt-10 md:mt-0">
-			<img src="/logo.jpeg" alt="Pisang Cavendish" class="w-[350px] md:w-[420px]" />
-			<div class="mt-2 flex justify-between text-sm text-gray-700">
-				<span>Mentah</span>
-				<span>Matang</span>
-			</div>
-		</div>
+		<img src="/logo.jpeg" alt="Pisang Cavendish" class="w-[350px] md:w-[420px]" />
 	</section>
 
 	<!-- Footer -->

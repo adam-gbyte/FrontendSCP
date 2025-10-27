@@ -35,7 +35,7 @@
 			<h2 class="text-2xl font-bold text-green-800">Tentang Sistem</h2>
 			<h1 class="text-4xl font-extrabold leading-snug text-green-900 md:text-5xl">
 				Klasifikasi Kematangan <br />
-				<span class="text-yellow-600">Buah Pisang</span>
+				<span class="text-yellow-600">Buah Pisang Cavendish</span>
 			</h1>
 
 			<p class="leading-relaxed text-gray-700">
@@ -44,7 +44,8 @@
 				digunakan untuk mengambil fitur citra buah, sedangkan algoritma
 				<span class="font-semibold">SVM</span>
 				digunakan untuk mengklasifikasikan buah ke dalam tiga kelas: <strong>mentah</strong>,
-				<strong>setengah matang</strong>, dan <strong>matang</strong>.
+				<strong>setengah matang</strong>, <strong>hampir matang</strong>,
+				<strong>matang</strong>, dan <strong> sangat matang</strong>.
 			</p>
 
 			<div class="rounded-xl border border-yellow-200 bg-white p-4 shadow-md">
@@ -53,7 +54,7 @@
 						<span class="font-semibold text-green-700">Frontend:</span> HTML, CSS, JavaScript (SvelteKit)
 					</li>
 					<li>
-						<span class="font-semibold text-green-700">Backend:</span> Python / Node.js
+						<span class="font-semibold text-green-700">Backend:</span> Python
 					</li>
 					<li>
 						<span class="font-semibold text-green-700">Database:</span> MongoDB
@@ -65,14 +66,7 @@
 			</div>
 		</div>
 
-		<!-- Image -->
-		<div class="mt-10 md:mt-0">
-			<img src="/logo.jpeg" alt="Pisang Cavendish" class="w-[350px] md:w-[420px]" />
-			<div class="mt-2 flex justify-between text-sm text-gray-700">
-				<span>Mentah</span>
-				<span>Matang</span>
-			</div>
-		</div>
+		<img src="/logo.jpeg" alt="Pisang Cavendish" class="w-[350px] md:w-[420px]" />
 	</section>
 
 	<!-- Footer -->
