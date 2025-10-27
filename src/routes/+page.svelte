@@ -8,7 +8,6 @@
 	let photoDataUrl = null;
 	let taking = false;
 
-	// mulai kamera dengan deviceId (atau default)
 	async function startCamera(deviceId = null, facingMode = null) {
 		stopCamera();
 		try {
@@ -37,7 +36,6 @@
 		if (videoEl) videoEl.pause();
 	}
 
-	// ambil foto ke canvas, simpan dataURL
 	function takePhoto() {
 		if (!videoEl) return;
 		taking = true;
@@ -51,7 +49,6 @@
 		taking = false;
 	}
 
-	// download foto
 	function downloadPhoto() {
 		if (!photoDataUrl) return;
 		const a = document.createElement('a');
@@ -60,17 +57,12 @@
 		a.click();
 	}
 
-	// upload ke server (/api/upload)
 	async function uploadPhoto() {
 		if (!photoDataUrl) return;
-		// ubah dataURL jadi blob
 		const blob = await (await fetch(photoDataUrl)).blob();
 		const fd = new FormData();
 		fd.append('photo', blob, `photo_${Date.now()}.jpg`);
-		const res = await fetch('/api/upload', {
-			method: 'POST',
-			body: fd
-		});
+		const res = await fetch('/api/upload', { method: 'POST', body: fd });
 		if (!res.ok) {
 			const txt = await res.text();
 			alert('Upload gagal: ' + txt);
@@ -80,17 +72,14 @@
 		}
 	}
 
-	// ambil daftar device kamera untuk pilih kamera belakang/depannya
 	async function enumerateDevices() {
 		const all = await navigator.mediaDevices.enumerateDevices();
 		devices = all.filter((d) => d.kind === 'videoinput');
-		// default: pilih device pertama
 		if (!selectedDeviceId && devices.length) {
 			selectedDeviceId = devices[0].deviceId;
 		}
 	}
 
-	// saat user ganti pilihan kamera
 	async function onChangeDevice() {
 		if (selectedDeviceId) {
 			await startCamera(selectedDeviceId);
@@ -99,17 +88,16 @@
 
 	onMount(async () => {
 		if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-			alert('Browser Anda tidak mendukung kamera (getUserMedia). Gunakan browser modern.');
+			alert('Browser Anda tidak mendukung kamera. Gunakan browser modern.');
 			return;
 		}
 		await enumerateDevices();
-		// coba gunakan kamera belakang bila tersedia
 		const back = devices.find((d) => /back|rear|environment/i.test(d.label));
 		if (back) {
 			selectedDeviceId = back.deviceId;
 			await startCamera(selectedDeviceId);
 		} else {
-			await startCamera(); // default
+			await startCamera();
 		}
 	});
 
@@ -120,77 +108,90 @@
 	<title>Analisis Kematangan Pisang Cavendish</title>
 </svelte:head>
 
-<h1>DETEKSI KEMATANGAN PISANG CAVENDISH</h1>
+<main
+	class="flex min-h-screen flex-col items-center bg-gradient-to-br from-yellow-50 to-yellow-100 px-4 py-10"
+>
+	<h1 class="mb-8 text-center text-3xl font-bold text-yellow-800 md:text-4xl">
+		🍌 Deteksi Kematangan Pisang Cavendish
+	</h1>
 
-<div class="camera">
-	<div>
-		<video bind:this={videoEl} autoplay playsinline muted></video>
-		<canvas bind:this={canvasEl}></canvas>
-	</div>
-
-	<div class="controls">
-		<label>
-			Pilih Kamera:
-			<select bind:value={selectedDeviceId} on:change={onChangeDevice}>
-				{#if devices.length === 0}
-					<option disabled>Memuat perangkat...</option>
-				{/if}
-				{#each devices as d}
-					<option value={d.deviceId}>{d.label || `Camera ${d.deviceId}`}</option>
-				{/each}
-			</select>
-		</label>
-
-		<div>
-			<button on:click={() => takePhoto()} disabled={taking}>📸 Ambil Foto</button>
-			<button on:click={() => startCamera(null, 'environment')}>🔄 Back (facingMode)</button>
-			<button on:click={() => startCamera(null, 'user')}>🔄 Front (facingMode)</button>
-			<button on:click={stopCamera}>⛔ Stop Kamera</button>
+	<div class="flex w-full max-w-6xl flex-col items-start justify-center gap-8 md:flex-row">
+		<div class="flex flex-col items-center">
+			<video
+				bind:this={videoEl}
+				autoplay
+				playsinline
+				muted
+				class="w-full max-w-md rounded-2xl bg-black shadow-lg"
+			></video>
+			<canvas bind:this={canvasEl} class="hidden"></canvas>
 		</div>
 
-		{#if photoDataUrl}
-			<div>
-				<p>Preview:</p>
-				<img class="preview" src={photoDataUrl} alt="Preview foto" />
-				<div style="margin-top:.5rem;">
-					<button on:click={downloadPhoto}>⬇️ Download</button>
-					<button on:click={uploadPhoto}>⬆️ Upload ke server</button>
-				</div>
-			</div>
-		{/if}
-	</div>
-</div>
+		<div class="flex w-full flex-col gap-4 rounded-2xl bg-white p-6 shadow-md md:w-96">
+			<label class="flex flex-col text-sm font-medium text-gray-700">
+				Pilih Kamera:
+				<select
+					bind:value={selectedDeviceId}
+					on:change={onChangeDevice}
+					class="mt-1 rounded-lg border border-gray-300 p-2 outline-none focus:ring-2 focus:ring-yellow-400"
+				>
+					{#if devices.length === 0}
+						<option disabled>Memuat perangkat...</option>
+					{/if}
+					{#each devices as d}
+						<option value={d.deviceId}>{d.label || `Camera ${d.deviceId}`}</option>
+					{/each}
+				</select>
+			</label>
 
-<style>
-	.camera {
-		display: flex;
-		gap: 1rem;
-		align-items: flex-start;
-		flex-wrap: wrap;
-	}
-	video {
-		max-width: 400px;
-		border-radius: 8px;
-		background: #000;
-	}
-	canvas {
-		display: none;
-	} /* canvas internal */
-	.controls {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-	.preview {
-		max-width: 400px;
-		border-radius: 8px;
-	}
-	select,
-	button {
-		padding: 0.4rem 0.6rem;
-		border-radius: 6px;
-		border: 1px solid #ddd;
-		background: #fff;
-		cursor: pointer;
-	}
-</style>
+			<div class="flex flex-wrap gap-2">
+				<button
+					on:click={() => takePhoto()}
+					disabled={taking}
+					class="rounded-lg bg-yellow-500 px-4 py-2 text-white shadow transition hover:bg-yellow-600"
+				>
+					📸 Ambil Foto
+				</button>
+				<button
+					on:click={() => startCamera(null, 'environment')}
+					class="rounded-lg bg-blue-500 px-4 py-2 text-white shadow transition hover:bg-blue-600"
+				>
+					🔄 Kamera Belakang
+				</button>
+				<button
+					on:click={() => startCamera(null, 'user')}
+					class="rounded-lg bg-blue-500 px-4 py-2 text-white shadow transition hover:bg-blue-600"
+				>
+					🔄 Kamera Depan
+				</button>
+				<button
+					on:click={stopCamera}
+					class="rounded-lg bg-red-500 px-4 py-2 text-white shadow transition hover:bg-red-600"
+				>
+					⛔ Stop Kamera
+				</button>
+			</div>
+
+			{#if photoDataUrl}
+				<div class="mt-4">
+					<p class="mb-2 font-semibold text-gray-700">📷 Hasil Foto:</p>
+					<img src={photoDataUrl} alt="Preview foto" class="max-w-full rounded-lg shadow-md" />
+					<div class="mt-3 flex gap-2">
+						<button
+							on:click={downloadPhoto}
+							class="flex-1 rounded-lg bg-green-500 px-4 py-2 text-white shadow transition hover:bg-green-600"
+						>
+							⬇️ Download
+						</button>
+						<button
+							on:click={uploadPhoto}
+							class="flex-1 rounded-lg bg-purple-500 px-4 py-2 text-white shadow transition hover:bg-purple-600"
+						>
+							⬆️ Upload
+						</button>
+					</div>
+				</div>
+			{/if}
+		</div>
+	</div>
+</main>
