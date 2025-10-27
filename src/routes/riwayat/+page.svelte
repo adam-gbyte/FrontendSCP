@@ -58,7 +58,7 @@
 	<!-- Navbar -->
 	<nav class="flex items-center justify-between bg-white px-8 py-4 shadow-sm">
 		<div class="flex items-center gap-2 text-xl font-semibold text-green-700">
-			<img src="/banana.png" alt="Logo Pisang" class="h-7 w-7" />
+			<img src="/logo.jpeg" alt="Logo Pisang" class="h-7 w-7" />
 			<span>Klasifikasi Pisang</span>
 		</div>
 
