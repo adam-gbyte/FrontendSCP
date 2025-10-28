@@ -48,6 +48,11 @@
 					class="rounded-xl border border-green-600 px-6 py-3 font-semibold text-green-700 shadow-md transition hover:bg-green-50"
 					>🔍 Lihat Riwayat</a
 				>
+				<a
+					href="/jurnal"
+					class="rounded-xl border border-green-600 px-6 py-3 font-semibold text-green-700 shadow-md transition hover:bg-green-50"
+					>Jurnal</a
+				>
 			</div>
 		</div>
 
