@@ -7,27 +7,6 @@
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-yellow-50">
-	<!-- Navbar -->
-	<nav class="flex items-center justify-between bg-white px-8 py-4 shadow-sm">
-		<div class="flex items-center gap-2 text-xl font-semibold text-green-700">
-			<img src="/logo.jpeg" alt="Logo Pisang" class="h-7 w-7" />
-			<span>Klasifikasi Pisang</span>
-		</div>
-
-		<ul class="flex gap-8 font-medium text-gray-700">
-			<li><a href="/" class="hover:text-green-700">Home</a></li>
-			<li>
-				<a href="/klasifikasi" class="hover:text-green-700"> Klasifikasi </a>
-			</li>
-			<li><a href="/riwayat" class="hover:text-green-700">Riwayat</a></li>
-			<li>
-				<a href="/tentang" class="border-b-2 border-green-700 pb-1 font-semibold text-green-700">
-					Tentang
-				</a>
-			</li>
-		</ul>
-	</nav>
-
 	<!-- Content Section -->
 	<section class="flex flex-1 flex-col items-center justify-between px-12 py-10 md:flex-row">
 		<!-- Text Content -->
