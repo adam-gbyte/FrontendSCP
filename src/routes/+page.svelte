@@ -8,10 +8,6 @@
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-yellow-50">
-	<!-- Navbar -->
-	 <Navbar/>
-
-	<!-- Hero Section -->
 	<section class="flex flex-1 flex-col items-center justify-between px-12 py-10 md:flex-row">
 		<div class="max-w-lg space-y-6">
 			<h1 class="text-4xl font-extrabold leading-snug text-green-800 md:text-5xl">
@@ -45,9 +41,4 @@
 
 		<img src="/logo.jpeg" alt="Pisang Cavendish" class="w-[350px] md:w-[420px]" />
 	</section>
-
-	<!-- Footer -->
-	<footer class="bg-yellow-100 py-4 text-center text-sm text-gray-600">
-		© 2025 Sistem Klasifikasi Kematangan Pisang Cavendish – Universitas Nusa Putra
-	</footer>
 </div>

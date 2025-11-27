@@ -126,9 +126,4 @@
 			</button>
 		</div>
 	</section>
-
-	<!-- Footer -->
-	<footer class="mt-auto bg-yellow-100 py-4 text-center text-sm text-gray-600">
-		© 2025 Sistem Klasifikasi Kematangan Pisang Cavendish – Universitas Nusa Putra
-	</footer>
 </div>

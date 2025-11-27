@@ -47,9 +47,4 @@
 
 		<img src="/logo.jpeg" alt="Pisang Cavendish" class="w-[350px] md:w-[420px]" />
 	</section>
-
-	<!-- Footer -->
-	<footer class="bg-yellow-100 py-4 text-center text-sm text-gray-600">
-		© 2025 Sistem Klasifikasi Kematangan Pisang Cavendish – Universitas Nusa Putra
-	</footer>
 </div>
