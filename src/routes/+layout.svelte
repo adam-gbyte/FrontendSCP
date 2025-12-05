@@ -11,8 +11,8 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Navbar />
+<!-- <Navbar /> -->
 
 {@render children?.()}
 
-<Footer/>
+<Footer />

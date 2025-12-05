@@ -10,7 +10,7 @@
 <div class="flex min-h-screen flex-col bg-yellow-50">
 	<section class="flex flex-1 flex-col items-center justify-between px-12 py-10 md:flex-row">
 		<div class="max-w-lg space-y-6">
-			<h1 class="text-4xl font-extrabold leading-snug text-green-800 md:text-5xl">
+			<h1 class="text-4xl leading-snug font-extrabold text-green-800 md:text-5xl">
 				Klasifikasi Kematangan <br />
 				<span class="text-yellow-600">Buah Pisang Cavendish</span>
 			</h1>

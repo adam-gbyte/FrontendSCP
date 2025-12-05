@@ -12,7 +12,7 @@
 		<!-- Text Content -->
 		<div class="max-w-xl space-y-6">
 			<h2 class="text-2xl font-bold text-green-800">Tentang Sistem</h2>
-			<h1 class="text-4xl font-extrabold leading-snug text-green-900 md:text-5xl">
+			<h1 class="text-4xl leading-snug font-extrabold text-green-900 md:text-5xl">
 				Klasifikasi Kematangan <br />
 				<span class="text-yellow-600">Buah Pisang Cavendish</span>
 			</h1>
