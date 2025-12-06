@@ -44,53 +44,34 @@
 	}
 </script>
 
-<div class="container">
-	<h2>Upload Gambar Pisang</h2>
+<div class="mx-auto max-w-[400px] space-y-4 p-4">
+	<h2 class="text-xl font-semibold">Upload Gambar Pisang</h2>
 
-	<input type="file" accept="image/*" on:change={handleFileChange} />
+	<input
+		type="file"
+		accept="image/*"
+		on:change={handleFileChange}
+		class="block w-full cursor-pointer rounded-lg border border-gray-300 p-2"
+	/>
 
-	<button on:click={sendImage}>Prediksi</button>
+	<button
+		on:click={sendImage}
+		class="rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+	>
+		Prediksi
+	</button>
 
 	{#if loading}
-		<p class="loading">{loading}</p>
+		<p class="italic text-gray-600">{loading}</p>
 	{/if}
 
 	{#if previewUrl}
-		<img class="preview" src={previewUrl} alt="preview" />
+		<img class="mt-2 w-full rounded-xl shadow" src={previewUrl} alt="preview" />
 	{/if}
 
 	{#if result}
-		<div class="result">{@html result}</div>
+		<div class="mt-4 text-xl font-bold text-gray-800">
+			{@html result}
+		</div>
 	{/if}
 </div>
-
-<style>
-	.container {
-		max-width: 400px;
-		margin: auto;
-	}
-	input[type='file'] {
-		margin-bottom: 15px;
-	}
-	.preview {
-		width: 100%;
-		margin-top: 20px;
-		border-radius: 8px;
-	}
-	.result {
-		margin-top: 20px;
-		font-size: 20px;
-		font-weight: bold;
-		color: #333;
-	}
-	button {
-		padding: 10px 20px;
-		cursor: pointer;
-		font-size: 16px;
-	}
-	.loading {
-		margin-top: 10px;
-		color: #555;
-		font-style: italic;
-	}
-</style>
