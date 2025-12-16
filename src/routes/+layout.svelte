@@ -8,10 +8,11 @@
 </script>
 
 <svelte:head>
+	<title>Cavendish</title>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<!-- <Navbar /> -->
+<Navbar />
 
 {@render children?.()}
 

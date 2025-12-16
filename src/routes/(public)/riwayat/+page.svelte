@@ -51,7 +51,7 @@
 </script>
 
 <svelte:head>
-	<title>Riwayat Klasifikasi Pisang Cavendish</title>
+	<title>Cavendish</title>
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-yellow-50">
@@ -65,11 +65,11 @@
 				placeholder="🔍 Cari data..."
 				bind:value={searchQuery}
 				on:input={cari}
-				class="w-full rounded-xl border border-green-300 p-3 focus:ring-2 focus:ring-green-400 focus:outline-none md:w-1/2"
+				class="w-full rounded-xl border border-green-300 p-3 focus:outline-none focus:ring-2 focus:ring-green-400 md:w-1/2"
 			/>
 
 			<select
-				class="rounded-xl border border-green-300 bg-white p-3 focus:ring-2 focus:ring-green-400 focus:outline-none"
+				class="rounded-xl border border-green-300 bg-white p-3 focus:outline-none focus:ring-2 focus:ring-green-400"
 			>
 				<option>Urutkan berdasarkan tanggal</option>
 			</select>
