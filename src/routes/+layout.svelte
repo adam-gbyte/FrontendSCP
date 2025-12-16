@@ -14,6 +14,8 @@
 
 <Navbar />
 
-{@render children?.()}
+<main class="flex flex-col items-center justify-center">
+	{@render children?.()}
+</main>
 
 <Footer />
