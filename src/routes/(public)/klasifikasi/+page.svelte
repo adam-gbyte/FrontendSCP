@@ -46,7 +46,7 @@
 
 <section
 	id="klasifikasi"
-	class="scroll-mt-25 bg-linear-to-br flex min-h-dvh w-screen items-center justify-center from-yellow-50 to-white p-6"
+	class="scroll-mt-25 bg-linear-to-br mt-20 flex min-h-dvh w-screen items-center justify-center from-yellow-50 to-white p-6"
 >
 	<div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl">
 		<!-- Header -->
