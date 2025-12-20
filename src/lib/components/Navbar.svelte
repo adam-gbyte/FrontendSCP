@@ -1,81 +1,77 @@
 <script>
-	import { onMount } from 'svelte';
-	import { Moon, Sun, Menu, X } from 'lucide-svelte';
-	// MOBILE MENU TOGGLER
-	let isMenuOpen = false;
-	function toggleMenu() {
-		isMenuOpen = !isMenuOpen;
-	}
+  import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
+
+  let scrolled = false;
+  let menuOpen = false;
+
+  const handleScroll = () => {
+    scrolled = window.scrollY > 50;
+  };
+
+  const toggleMenu = () => {
+    menuOpen = !menuOpen;
+  };
+
+  onMount(() => {
+    if (!browser) return;
+    window.addEventListener('scroll', handleScroll);
+  });
+
+  onDestroy(() => {
+    if (!browser) return;
+    window.removeEventListener('scroll', handleScroll);
+  });
 </script>
 
-<nav
-	class={`fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-gray-100 px-10 py-6 md:flex-row`}
->
-	<h1 class="text-xl font-bold text-gray-900 md:text-2xl">Klasifikasi Pisang</h1>
-	<!-- <img src="/logo.jpeg" alt="Logo Pisang" class="h-7 w-7" /> -->
+<nav class="nav-base {scrolled ? 'nav-scrolled' : 'nav-transparent'}">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="flex h-16 items-center justify-between">
 
-	<div class={`hidden items-center space-x-6 md:flex`}>
-		<ul class="flex items-center space-x-8 text-sm font-semibold">
-			<li><a href="/" class="hover:text-[#ff48c4]">HOME</a></li>
-			<li><a href="/klasifikasi" class="hover:text-[#ff48c4]">KLASIFIKASI</a></li>
-			<li><a href="/riwayat" class="hover:text-[#ff48c4]">RIWAYAT</a></li>
-			<li><a href="/tentang" class="hover:text-[#ff48c4]">TENTANG</a></li>
-			<li><a href="/jurnal" class="hover:text-[#ff48c4]">JURNAL</a></li>
-		</ul>
-	</div>
+      <!-- LOGO -->
+      <h1 class="text-xl font-bold">Pisang Cavendish</h1>
+
+      <!-- DESKTOP MENU -->
+      <ul class="hidden md:flex items-center gap-6 font-medium">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/classification" class="nav-link">Klasifikasi</a></li>
+        <li><a href="/history" class="nav-link">Riwayat</a></li>
+        <li><a href="/paper" class="nav-link">Paper</a></li>
+      </ul>
+
+      <!-- MOBILE BUTTON -->
+      <button
+        class="md:hidden flex items-center justify-center rounded-lg p-2 hover:bg-black/5"
+        on:click={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          {#if menuOpen}
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          {:else}
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          {/if}
+        </svg>
+      </button>
+    </div>
+
+    <!-- MOBILE MENU -->
+    {#if menuOpen}
+      <div
+        class="md:hidden mt-2 rounded-2xl bg-white/90 backdrop-blur-xl shadow-lg overflow-hidden"
+      >
+        <ul class="flex flex-col">
+          <li><a href="/" class="mobile-link">Home</a></li>
+          <li><a href="/about" class="mobile-link">About</a></li>
+          <li><a href="/classification" class="mobile-link">Klasifikasi</a></li>
+          <li><a href="/history" class="mobile-link">Riwayat</a></li>
+          <li><a href="/paper" class="mobile-link">Paper</a></li>
+        </ul>
+      </div>
+    {/if}
+  </div>
 </nav>
-
-<!-- Mobile Menu Button -->
-<button
-	class="z-70 fixed right-4 top-4 cursor-pointer rounded-md border border-gray-300 bg-gray-100 p-2 text-gray-800 md:hidden"
-	on:click={toggleMenu}
-	aria-label="Toggle Menu"
->
-	{#if isMenuOpen}
-		<X />
-	{:else}
-		<Menu />
-	{/if}
-</button>
-
-<aside
-	class={`z-60 fixed right-0 top-0 h-full w-64 transform rounded-l-2xl bg-gray-300 p-4 shadow-lg transition-transform duration-500 ease-in-out md:hidden ${
-		isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-	}`}
->
-	<h2 class="text-lg font-bold">Adam</h2>
-	<ul class="flex w-full flex-col pb-4 pt-8 text-sm font-semibold">
-		<li>
-			<a
-				href="/"
-				class="flex rounded-t-xl bg-gray-100 px-4 py-2 hover:bg-gray-200 hover:text-[#ff48c4]"
-				>HOME</a
-			>
-		</li>
-		<li>
-			<a
-				href="/klasifikasi"
-				class="flex bg-gray-100 px-4 py-2 hover:bg-gray-200 hover:text-[#ff48c4]">KLASIFIKASI</a
-			>
-		</li>
-		<li>
-			<a href="/riwayat" class="flex bg-gray-100 px-4 py-2 hover:bg-gray-200 hover:text-[#ff48c4]"
-				>RIWAYAT</a
-			>
-		</li>
-		<li>
-			<a
-				href="/tentang"
-				class="flex rounded-b-xl bg-gray-100 px-4 py-2 hover:bg-gray-200 hover:text-[#ff48c4]"
-				>TENTANG</a
-			>
-		</li>
-		<li>
-			<a
-				href="/jurnal"
-				class="flex rounded-b-xl bg-gray-100 px-4 py-2 hover:bg-gray-200 hover:text-[#ff48c4]"
-				>JURNAL</a
-			>
-		</li>
-	</ul>
-</aside>

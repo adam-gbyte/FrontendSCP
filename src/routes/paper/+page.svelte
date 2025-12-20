@@ -4,7 +4,7 @@
 
 <div class="flex min-h-screen flex-col bg-gray-50">
 	<!-- Toolbar -->
-	<header class="flex items-center justify-between bg-white px-6 py-4 shadow-sm">
+	<!-- <header class="flex items-center justify-between bg-white px-6 py-4 shadow-sm">
 		<h1 class="text-xl font-semibold text-gray-700">📄 Preview Dokumen</h1>
 		<a
 			href="/sample.pdf"
@@ -13,7 +13,7 @@
 		>
 			Unduh PDF
 		</a>
-	</header>
+	</header> -->
 
 	<!-- PDF Viewer -->
 	<main class="flex-1 p-6">
